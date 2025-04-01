@@ -1,3 +1,4 @@
+// use this config to compare current vs previous scores
 module.exports = {
   ci: {
     collect: {
@@ -9,9 +10,6 @@ module.exports = {
       },
     },
     assert: {
-      // assertions: {
-      //   "categories:performance": ["warn", { minScore: 0.7 }],
-      // },
       assertions: {
         // Fail if performance score drops by more than 5 points
         "categories:performance": ["error", { minScore: 0.7, aggregationMethod: "median-run", compareWithBaseline: true, maxDelta: -0.05 }],
