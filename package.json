@@ -5,21 +5,30 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyze": "cross-env ANALYZE=true next build",
+    "setup-reports": "node setup-bundle-reports.js",
+    "generate-reports": "node ci-report-generator.js",
+    "serve-reports": "node bundle-report-server.js",
+    "reports": "node generate-and-serve-reports.js",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
     "@lhci/cli": "^0.14.0",
+    "express": "^5.1.0",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.2.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
     "tailwindcss": "^4",

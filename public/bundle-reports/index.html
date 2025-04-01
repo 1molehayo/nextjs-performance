@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next.js Bundle Analysis</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Next.js Bundle Analysis Reports</h1>
+    <div class="controls">
+      <button id="refreshBtn">Refresh</button>
+      <select id="reportSelect">
+        <option value="">Loading reports...</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <div class="sidebar">
+      <div class="report-list-container">
+        <h2>Available Reports</h2>
+        <ul id="reportList" class="report-list"></ul>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="reportViewer">
+        <div class="placeholder">Select a report to view</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Next.js Bundle Analysis Tool</p>
+  </footer>
+
+  <!-- Load third-party dependencies -->
+  <script src="https://unpkg.com/d3@5.16.0/dist/d3.min.js"></script>
+  <script src="https://unpkg.com/webpack-bundle-analyzer@4.5.0/public/viewer.js"></script>
+  
+  <!-- Load our application scripts -->
+  <script src="/main.js"></script>
+</body>
+</html>

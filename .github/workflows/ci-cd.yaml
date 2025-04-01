@@ -1,1 +1,56 @@
+name: CI
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
+jobs:
+  build-and-analyze:
+    name: Build and Analyze with Lighthouse
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build with bundle analyzer
+      run: |
+        ANALYZE=true npm run build
+      env:
+        NEXT_BUNDLE_ANALYZER: true
+    
+    - name: Install Lighthouse CI
+      run: npm install -g @lhci/cli@0.14.x
+      
+    - name: Run Lighthouse CI
+      run: |
+        # For PRs, compare with the base branch
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          lhci autorun --collect.url=http://localhost:3000 --collect.startServerCommand="npm run start" --collect.startServerReadyPattern="started server"
+        else
+          # For main branch, run without comparison but save as baseline
+          lhci autorun --collect.url=http://localhost:3000 --collect.startServerCommand="npm run start" --collect.startServerReadyPattern="started server"
+        fi
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Set the max delta tolerance as an environment variable for flexibility
+        LHCI_MAX_SCORE_DELTA: -0.05
+
+    - name: Upload bundle analysis
+      uses: actions/upload-artifact@v4
+      with:
+        name: next-build-and-reports
+        path: |
+          .next/analyze
+          .lighthouseci
+        retention-days: 30
+    

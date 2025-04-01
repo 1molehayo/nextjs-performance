@@ -1,0 +1,12 @@
+{
+  "assets": [
+    {
+      "name": "client",
+      "size": 332176,
+      "parsedSize": 0,
+      "gzipSize": 0
+    }
+  ],
+  "source": "Next.js Bundle Analyzer (HTML Report)",
+  "htmlPath": ".next/analyze/client.html"
+}
