@@ -5,7 +5,7 @@ module.exports = {
       url: ["https://nextjs-performance-xi.vercel.app/"],
       numberOfRuns: 3,
       settings: {
-        preset: "mobile",
+        preset: "perf",
         onlyCategories: ["performance", "accessibility", "best-practices", "seo"],
       },
     },
