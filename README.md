@@ -40,11 +40,12 @@ npm install --save-dev @lhci/cli cross-env
 
 ### 2. Create Configuration File
 
-Create `.lighthouserc.js` in your project root with either the Option 1 or Option 2 configuration.
+Create `.lighthouserc.js` in your project root with either the Option 1 (`.lighthouserc.js`) or Option 2 (`.lighthouserc.v2.js`) configuration, remember to change the name of the file to `.lighthouserc.js` irrespective of the configuration you decide to use.
 
 ### 3. Update GitHub Actions Workflow
 
-Update your CI workflow file using the provided template in (`.github/workflows/ci-cd.yaml`) for Option 1 and (`.github/workflows/ci-cd-fixed.yaml`) for Option 2.
+Update your CI workflow file using the provided template for the option chosen in the previous step; i.e. (`.github/workflows/ci-cd.yaml`) for Option 1 and (`.github/workflows/ci-cd-fixed.yaml`) for Option 2.
+Also remember to update the local server in the workflow, currently it defaults to `http://localhost:3000`
 
 ### 4. Add Scripts to package.json
 

@@ -36,5 +36,6 @@ module.exports = {
       // Keep last 10 baseline runs
       dailyLimit: 10,
     },
+    preset: 'lighthouse:no-pwa',
   },
 };

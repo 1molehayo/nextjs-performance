@@ -29,5 +29,6 @@ module.exports = {
       upload: {
         target: "temporary-public-storage",
       },
+      preset: 'lighthouse:no-pwa',
     },
   };
